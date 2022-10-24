@@ -11,7 +11,7 @@ JSX.Element {
 
     <article className="cities__card place-card" id = {id.toString()}>
       <div className="place-card__mark">
-        if (mark) {<span>{mark}</span>}
+        {<span>{mark}</span>}
       </div>
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#">
