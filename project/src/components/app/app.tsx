@@ -4,7 +4,7 @@ import RoomPage from '../../pages/room-page/room-page';
 import NotFoundPage from '../../pages/not-found-page/not-found-page';
 import {Route, BrowserRouter, Routes} from 'react-router-dom';
 import {HelmetProvider} from 'react-helmet-async';
-import {OfferType} from '../../pages/mock/offers';
+import {OfferType} from '../../mock/offers';
 import {AppRoute} from '../../const';
 
 type AppProps = {

@@ -1,4 +1,4 @@
-import {OfferType} from '../../pages/mock/offers';
+import {OfferType} from '../../mock/offers';
 
 type CardInfoProps = {
   offer: OfferType;
@@ -10,9 +10,12 @@ JSX.Element {
   return (
 
     <article className="cities__card place-card" id = {id.toString()}>
-      <div className="place-card__mark">
-        <span>{mark}</span>
-      </div>
+      { mark
+        ?
+        <div className="place-card__mark">
+          <span>{mark}</span>
+        </div>
+        : ''}
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#">
           <img className="place-card__image" src={cardImage} width="260" height="200" alt="Place"/>
