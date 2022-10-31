@@ -1,4 +1,4 @@
-import PlaceCard from '../../components/place-card/place-card';
+import CardList from '../../components/card-list/card-list';
 import Header from '../../components/header/header';
 import {OfferType} from '../../mock/offers';
 import {Helmet} from 'react-helmet-async';
@@ -88,9 +88,7 @@ function MainPage({offers}: OfferProps): JSX.Element {
                   <li className="places__option" tabIndex={0}>Top rated first</li>
                 </ul>
               </form>
-              <div className="cities__places-list places__list tabs__content">
-                {offers.map((item) => <PlaceCard offer={item} key={item.id}/>)}
-              </div>
+              <CardList offers={offers}/>
             </section>
             <div className="cities__right-section">
               <section className="cities__map map"></section>
