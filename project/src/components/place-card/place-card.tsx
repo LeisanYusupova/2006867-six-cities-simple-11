@@ -8,7 +8,7 @@ type CardInfoProps = {
 
 function PlaceCard({offer, onActiveChange}: CardInfoProps):
 JSX.Element {
-  const { id, isPremium, price, cardName, cardImage, cardType } = offer;
+  const { id, isPremium, price, title, previewImage, type} = offer;
   return (
 
     <article className="cities__card place-card" onMouseOver = {()=>onActiveChange(offer)}>
@@ -20,7 +20,7 @@ JSX.Element {
         : ''}
       <div className="cities__image-wrapper place-card__image-wrapper">
         <Link to = {`/offer/${id}`}>
-          <img className="place-card__image" src={cardImage} width="260" height="200" alt="Place"/>
+          <img className="place-card__image" src={previewImage} width="260" height="200" alt="Place"/>
         </Link>
       </div>
       <div className="place-card__info">
@@ -38,9 +38,9 @@ JSX.Element {
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to = {`/offer/${id}`}>{cardName}</Link>
+          <Link to = {`/offer/${id}`}>{title}</Link>
         </h2>
-        <p className="place-card__type">{cardType}</p>
+        <p className="place-card__type">{type}</p>
       </div>
     </article>);
 }
