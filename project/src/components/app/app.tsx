@@ -25,7 +25,7 @@ function App({offers}: AppProps): JSX.Element {
             element={<LoginPage/>}
           />
           <Route
-            path={`${AppRoute.Room}/id`}
+            path={AppRoute.Room}
             element={<RoomPage/>}
           />
           <Route
