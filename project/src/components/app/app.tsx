@@ -17,6 +17,7 @@ function App({offers}: AppProps): JSX.Element {
       <BrowserRouter>
         <Routes>
           <Route
+            index
             path={AppRoute.Root}
             element={<MainPage offers = {offers} />}
           />
