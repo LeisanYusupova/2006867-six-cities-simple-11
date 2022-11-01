@@ -1,6 +1,6 @@
 import CardList from '../../components/card-list/card-list';
 import Header from '../../components/header/header';
-import {OfferType} from '../../mock/offers';
+import {OfferType} from '../../types/types';
 import {Helmet} from 'react-helmet-async';
 
 type OfferProps = {

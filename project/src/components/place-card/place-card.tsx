@@ -1,4 +1,4 @@
-import {OfferType} from '../../mock/offers';
+import {OfferType} from '../../types/types';
 import { Link } from 'react-router-dom';
 
 type CardInfoProps = {

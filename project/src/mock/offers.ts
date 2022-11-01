@@ -1,51 +1,4 @@
-
-export type OfferType = {
-  bedrooms: number;
-  city: {
-    location: {
-      latitude: number;
-      longitude: number;
-      zoom: number;
-    };
-    name: string;
-  };
-  description: string;
-  goods: string[];
-  host: {
-    avatarUrl: string;
-    id: number;
-    isPro: boolean;
-    name: string;
-  };
-  id: number;
-  images: string[];
-  isPremium: boolean;
-  location: {
-    latitude: number;
-    longitude: number;
-    zoom: number;
-  };
-  maxAdults: number;
-  previewImage: string;
-  price: number;
-  rating: number;
-  title: string;
-  type: string;
-}
-
-export type ReviewType = {
-  hotelId: number;
-  comment: string;
-  date: string;
-  id: number;
-  rating: number;
-  user: {
-    avatarUrl: string;
-    id: number;
-    isPro: boolean;
-    name: string;
-  };
-};
+import { OfferType, ReviewType} from '../types/types';
 
 
 export const offers: OfferType[] = [
@@ -99,7 +52,7 @@ export const offers: OfferType[] = [
         longitude: 220,
         zoom: 5
       },
-      name: 'Berlin',
+      name: 'Amsterdam',
     },
     description: 'Nice city',
     goods: [
@@ -141,7 +94,7 @@ export const offers: OfferType[] = [
         longitude: 220,
         zoom: 5
       },
-      name: 'Paris',
+      name: 'Amsterdam',
     },
     description: 'Nice city',
     goods: [
@@ -183,7 +136,7 @@ export const offers: OfferType[] = [
         longitude: 220,
         zoom: 5
       },
-      name: 'Milan',
+      name: 'Amsterdam',
     },
     description: 'You can stay here for a long time',
     goods: [

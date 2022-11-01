@@ -1,5 +1,5 @@
 import PlaceCard from '../place-card/place-card';
-import {OfferType} from '../../mock/offers';
+import {OfferType} from '../../types/types';
 import {useState} from 'react';
 
 type CardListOffers = {

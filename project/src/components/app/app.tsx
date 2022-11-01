@@ -4,7 +4,7 @@ import RoomPage from '../../pages/room-page/room-page';
 import NotFoundPage from '../../pages/not-found-page/not-found-page';
 import {Route, BrowserRouter, Routes} from 'react-router-dom';
 import {HelmetProvider} from 'react-helmet-async';
-import {OfferType} from '../../mock/offers';
+import {OfferType} from '../../types/types';
 import {AppRoute} from '../../const';
 
 type AppProps = {
@@ -24,10 +24,13 @@ function App({offers}: AppProps): JSX.Element {
             path={AppRoute.Login}
             element={<LoginPage/>}
           />
-          <Route
-            path={AppRoute.Room}
-            element={<RoomPage/>}
-          />
+          <Route path={AppRoute.Room}>
+            <Route
+              path={AppRoute.Id}
+              element={<RoomPage offers = {offers}/>}
+            />
+          </Route>
+
           <Route
             path='*'
             element={<NotFoundPage/>}

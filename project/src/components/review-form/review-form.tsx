@@ -7,7 +7,7 @@ function ReviewForm(): JSX.Element {
     review: ''
   });
 
-  const fieldChangeHandler = (evt: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement> ) => {
+  const handleInputChange = (evt: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement> ) => {
     const { name, value } = evt.target;
     setFormData({
       ...formData, [name]: value
@@ -25,7 +25,7 @@ function ReviewForm(): JSX.Element {
           value="5"
           id="5-stars"
           type="radio"
-          onChange = {fieldChangeHandler}
+          onChange = {handleInputChange}
           checked = {formData.rating === '5'}
         />
         <label htmlFor="5-stars" className="reviews__rating-label form__rating-label" title="perfect">
@@ -38,7 +38,7 @@ function ReviewForm(): JSX.Element {
           name="rating"
           value="4" id="4-stars"
           type="radio"
-          onChange = {fieldChangeHandler}
+          onChange = {handleInputChange}
           checked = {formData.rating === '4'}
         />
         <label htmlFor="4-stars" className="reviews__rating-label form__rating-label" title="good">
@@ -52,7 +52,7 @@ function ReviewForm(): JSX.Element {
           value="3"
           id="3-stars"
           type="radio"
-          onChange = {fieldChangeHandler}
+          onChange = {handleInputChange}
           checked = {formData.rating === '3'}
         />
         <label htmlFor="3-stars" className="reviews__rating-label form__rating-label" title="not bad">
@@ -66,7 +66,7 @@ function ReviewForm(): JSX.Element {
           value="2"
           id="2-stars"
           type="radio"
-          onChange = {fieldChangeHandler}
+          onChange = {handleInputChange}
           checked = {formData.rating === '2'}
         />
         <label htmlFor="2-stars" className="reviews__rating-label form__rating-label" title="badly">
@@ -80,6 +80,7 @@ function ReviewForm(): JSX.Element {
           value="1"
           id="1-star"
           type="radio"
+          onChange = {handleInputChange}
           checked = {formData.rating === '1'}
         />
         <label htmlFor="1-star" className="reviews__rating-label form__rating-label" title="terribly">
@@ -93,7 +94,7 @@ function ReviewForm(): JSX.Element {
         id="review"
         name="review"
         placeholder="Tell how was your stay, what you like and what can be improved"
-        onChange={fieldChangeHandler}
+        onChange={handleInputChange}
         value={formData.review}
       >
       </textarea>
