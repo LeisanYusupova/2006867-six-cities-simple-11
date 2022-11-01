@@ -136,7 +136,7 @@ export const comments: CommentsType[] = [{
   comment: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.',
   date: 'April 2019',
   id: 1,
-  rating: 8,
+  rating: 5,
   user: {
     avatarUrl: 'img/avatar-max.jpg',
     id: 1,
@@ -148,7 +148,7 @@ export const comments: CommentsType[] = [{
   comment: 'Good place.',
   date: 'May 2019',
   id: 2,
-  rating: 7,
+  rating: 4,
   user: {
     avatarUrl: 'img/avatar-angelina.jpg',
     id: 2,
