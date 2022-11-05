@@ -8,7 +8,7 @@ export enum AppRoute {
 export const amsterdam = {
   lat: 52.374,
   lng: 4.88969,
-  zoom: 10
+  zoom: 12
 };
 
 export const URL_MARKER_DEFAULT = 'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg';

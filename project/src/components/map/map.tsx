@@ -3,11 +3,12 @@ import { Icon, Marker } from 'leaflet';
 import useMap from '../../hooks/useMap';
 import 'leaflet/dist/leaflet.css';
 import { OfferType, City } from '../../types/types';
-import {URL_MARKER_DEFAULT } from '../../const';
+import {URL_MARKER_DEFAULT, URL_MARKER_CURRENT} from '../../const';
 
 type MapProps ={
   points: OfferType[];
   city: City;
+  activeCard?: OfferType;
 }
 
 const defaultCustomIcon = new Icon({
@@ -16,8 +17,14 @@ const defaultCustomIcon = new Icon({
   iconAnchor: [20, 40]
 });
 
+const currentCustomIcon = new Icon({
+  iconUrl: URL_MARKER_CURRENT,
+  iconSize: [40, 40],
+  iconAnchor: [20, 40]
+});
 
-function Map({points , city}: MapProps):JSX.Element {
+
+function Map({points , city, activeCard}: MapProps):JSX.Element {
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
 
@@ -30,13 +37,18 @@ function Map({points , city}: MapProps):JSX.Element {
         });
 
         marker
-          .setIcon(defaultCustomIcon).addTo(map);
+          .setIcon(
+            activeCard !== undefined && point.title === activeCard.title
+              ? currentCustomIcon
+              : defaultCustomIcon
+          )
+          .addTo(map);
       });
     }
-  }, [map, points]);
+  }, [map, points, activeCard]);
 
   return (
-    <section className="cities__map map" ref={mapRef}></section>
+    <div style={{height: '500px'}} ref={mapRef}></div>
   );
 }
 
