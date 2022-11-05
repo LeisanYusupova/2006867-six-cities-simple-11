@@ -2,12 +2,16 @@ import CardList from '../../components/card-list/card-list';
 import Header from '../../components/header/header';
 import {OfferType} from '../../types/types';
 import {Helmet} from 'react-helmet-async';
+import Map from '../../components/map/map';
+import {City} from '../../types/types';
 
-type OfferProps = {
+
+type MainPageProps = {
   offers: OfferType[];
+  city: City;
 }
 
-function MainPage({offers}: OfferProps): JSX.Element {
+function MainPage({offers, city}: MainPageProps): JSX.Element {
   return (
     <body className="page page--gray page--main">
       <Helmet>
@@ -74,9 +78,7 @@ function MainPage({offers}: OfferProps): JSX.Element {
               </form>
               <CardList offers={offers}/>
             </section>
-            <div className="cities__right-section">
-              <section className="cities__map map"></section>
-            </div>
+            <Map points= {offers} city = {city} ></Map>
           </div>
         </div>
       </main>

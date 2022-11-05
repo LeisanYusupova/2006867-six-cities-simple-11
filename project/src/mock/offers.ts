@@ -6,8 +6,8 @@ export const offers: OfferType[] = [
     bedrooms: 2,
     city: {
       location: {
-        latitude: 180,
-        longitude: 220,
+        latitude: 52.3909553943508,
+        longitude: 4.85309666406198,
         zoom: 5
       },
       name: 'Amsterdam',
@@ -33,8 +33,8 @@ export const offers: OfferType[] = [
     ],
     isPremium: false,
     location: {
-      latitude: 100,
-      longitude: 20,
+      latitude: 52.3909553943508,
+      longitude: 4.85309666406198,
       zoom: 2
     },
     maxAdults: 2,
@@ -48,9 +48,9 @@ export const offers: OfferType[] = [
     bedrooms: 1,
     city: {
       location: {
-        latitude: 180,
-        longitude: 220,
-        zoom: 5
+        latitude: 52.3909553943508,
+        longitude: 4.85309666406198,
+        zoom: 10
       },
       name: 'Amsterdam',
     },
@@ -75,9 +75,9 @@ export const offers: OfferType[] = [
     ],
     isPremium: false,
     location: {
-      latitude: 100,
-      longitude: 20,
-      zoom: 2
+      latitude: 52.3609553943508,
+      longitude: 4.85309666406198,
+      zoom: 10
     },
     maxAdults: 2,
     previewImage: 'img/apartment-03.jpg',
@@ -90,9 +90,9 @@ export const offers: OfferType[] = [
     bedrooms: 3,
     city: {
       location: {
-        latitude: 180,
-        longitude: 220,
-        zoom: 5
+        latitude: 52.3909553943508,
+        longitude: 4.929309666406198,
+        zoom: 10
       },
       name: 'Amsterdam',
     },
@@ -117,9 +117,9 @@ export const offers: OfferType[] = [
     ],
     isPremium: true,
     location: {
-      latitude: 100,
-      longitude: 20,
-      zoom: 2
+      latitude: 52.3909553943508,
+      longitude:  4.929309666406198,
+      zoom: 10
     },
     maxAdults: 3,
     previewImage: 'img/room.jpg',
@@ -132,8 +132,8 @@ export const offers: OfferType[] = [
     bedrooms: 2,
     city: {
       location: {
-        latitude: 180,
-        longitude: 220,
+        latitude: 52.3809553943508,
+        longitude: 4.939309666406198,
         zoom: 5
       },
       name: 'Amsterdam',
@@ -159,8 +159,8 @@ export const offers: OfferType[] = [
     ],
     isPremium: true,
     location: {
-      latitude: 100,
-      longitude: 20,
+      latitude: 52.3809553943508,
+      longitude: 4.939309666406198,
       zoom: 2
     },
     maxAdults: 2,

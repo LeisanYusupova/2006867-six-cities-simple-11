@@ -5,7 +5,7 @@ import NotFoundPage from '../../pages/not-found-page/not-found-page';
 import {Route, BrowserRouter, Routes} from 'react-router-dom';
 import {HelmetProvider} from 'react-helmet-async';
 import {OfferType} from '../../types/types';
-import {AppRoute} from '../../const';
+import {AppRoute, amsterdam} from '../../const';
 
 type AppProps = {
   offers: OfferType[];
@@ -19,7 +19,7 @@ function App({offers}: AppProps): JSX.Element {
           <Route
             index
             path={AppRoute.Root}
-            element={<MainPage offers = {offers} />}
+            element={<MainPage offers = {offers} city = {amsterdam}/>}
           />
           <Route
             path={AppRoute.Login}
