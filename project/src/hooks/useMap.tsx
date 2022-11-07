@@ -1,4 +1,4 @@
-import { useEffect, useState, MutableRefObject } from 'react';
+import { useEffect, useState, MutableRefObject, useRef } from 'react';
 import { Map, TileLayer } from 'leaflet';
 import { City } from '../types/types';
 
@@ -7,9 +7,10 @@ function useMap(
   city: City
 ): Map | null {
   const [map, setMap] = useState<Map | null>(null);
+  const isRenderedRef = useRef(false);
 
   useEffect(() => {
-    if (mapRef.current !== null && map === null) {
+    if (mapRef.current !== null && map === null && !isRenderedRef.current ) {
       const instance = new Map(mapRef.current, {
         center: {
           lat: city.lat,
