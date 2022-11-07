@@ -1,4 +1,4 @@
-import { OfferType, ReviewType} from '../types/types';
+import {OfferType} from '../types/types';
 
 
 export const offers: OfferType[] = [
@@ -54,7 +54,7 @@ export const offers: OfferType[] = [
       },
       name: 'Amsterdam',
     },
-    description: 'Nice city',
+    description: 'Overlooking the flower market, NH Collection Amsterdam Flower Market is located in the middle of the city center, only 100 m from the Kalverstraat shopping area. NH Collection Amsterdam Flower Market offers free WiFi throughout the hotel.',
     goods: [
       'Wi-Fi',
       'Fridge',
@@ -82,7 +82,7 @@ export const offers: OfferType[] = [
     maxAdults: 2,
     previewImage: 'img/apartment-03.jpg',
     price: 500,
-    rating: 4,
+    rating: 3.7,
     title: 'Wood and stone place',
     type: 'Private room'
   },
@@ -96,7 +96,7 @@ export const offers: OfferType[] = [
       },
       name: 'Amsterdam',
     },
-    description: 'Nice city',
+    description: 'This hotel combines luxury, technology and sustainability in a living building shaped by nature. Free WiFi is offered throughout the property.',
     goods: [
       'Wi-Fi',
       'Fridge',
@@ -138,7 +138,7 @@ export const offers: OfferType[] = [
       },
       name: 'Amsterdam',
     },
-    description: 'You can stay here for a long time',
+    description: 'This unique hotel offers modern rooms with mood lighting, free Wi-Fi and a flat-screen TV with free on-demand films. CitizenM Amsterdam South includes designer lounges and is 751 m from the RAI Conference Center.',
     goods: [
       'Wi-Fi',
       'Fridge',
@@ -166,35 +166,8 @@ export const offers: OfferType[] = [
     maxAdults: 2,
     previewImage: 'img/apartment-01.jpg',
     price: 500,
-    rating: 4,
+    rating: 3.7,
     title: 'Cozy Hotel',
     type: 'Hotel'
   }];
 
-export const reviews: ReviewType[] = [
-  {
-    comment: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.',
-    date: 'April 2019',
-    hotelId: 1,
-    id: 1,
-    rating: 5,
-    user: {
-      avatarUrl: 'img/avatar-max.jpg',
-      id: 1,
-      isPro: false,
-      name: 'Max',
-    }
-  },
-  {
-    comment: 'Good place.',
-    date: 'May 2019',
-    id: 2,
-    hotelId: 2,
-    rating: 4,
-    user: {
-      avatarUrl: 'img/avatar-angelina.jpg',
-      id: 2,
-      isPro: true,
-      name: 'Angelina',
-    }
-  }];
