@@ -48,7 +48,7 @@ function Map({points , city, activeCard}: MapProps):JSX.Element {
   }, [map, points, activeCard]);
 
   return (
-    <div style={{height: '500px'}} ref={mapRef}></div>
+    <div style={{height: '600px'}} ref={mapRef}></div>
   );
 }
 
