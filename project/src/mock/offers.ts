@@ -169,5 +169,89 @@ export const offers: OfferType[] = [
     rating: 3.7,
     title: 'Cozy Hotel',
     type: 'Hotel'
-  }];
+  },
+  {
+    bedrooms: 2,
+    city: {
+      location: {
+        latitude: 48.835146,
+        longitude: 2.282538,
+        zoom: 5
+      },
+      name: 'Paris',
+    },
+    description: 'Porte de Versailles Hotel is situated 600 m from Porte de Versailles Exhibition Centre, and it offers design rooms just 650 m from Balard Metro Station.',
+    goods: [
+      'Wi-Fi',
+      'Fridge',
+      'Swimming pool'
+    ],
+    host: {
+      avatarUrl: 'img/avatar-max.jpg',
+      id: 2,
+      isPro: true,
+      name: 'Polina',
+    },
+    id: 5,
+    images: [
+      'img/apartment-01.jpg',
+      'img/apartment-02.jpg',
+      'img/apartment-03.jpg'
+    ],
+    isPremium: true,
+    location: {
+      latitude: 48.835146,
+      longitude: 2.282538,
+      zoom: 2
+    },
+    maxAdults: 2,
+    previewImage: 'img/apartment-01.jpg',
+    price: 400,
+    rating: 4.7,
+    title: 'Porte de Versailles Hotel',
+    type: 'Hotel'
+  },
+  {
+    bedrooms: 3,
+    city: {
+      location: {
+        latitude: 48.835146,
+        longitude: 2.282538,
+        zoom: 5
+      },
+      name: 'Paris',
+    },
+    description: 'Floride-Etoile is 0.8 mi from the Arc de Triomphe, 601 m from Trocadero and just 200 m from the Boissière Metro Station. It offers 24-hour reception with car rental and tour information.',
+    goods: [
+      'Wi-Fi',
+      'Fridge',
+      'Swimming pool',
+      'Cabel TV'
+    ],
+    host: {
+      avatarUrl: 'img/avatar-max.jpg',
+      id: 2,
+      isPro: true,
+      name: 'Polina',
+    },
+    id: 6,
+    images: [
+      'img/apartment-01.jpg',
+      'img/apartment-02.jpg',
+      'img/apartment-03.jpg'
+    ],
+    isPremium: true,
+    location: {
+      latitude: 48.856663,
+      longitude: 2.351556,
+      zoom: 2
+    },
+    maxAdults: 2,
+    previewImage: 'img/apartment-01.jpg',
+    price: 300,
+    rating: 3.7,
+    title: 'Floride-Etoile',
+    type: 'Apartaments'
+  },
+];
 
