@@ -30,6 +30,7 @@ function Map({points , city, activeCard}: MapProps):JSX.Element {
 
   useEffect(() => {
     if (map) {
+      map.setView([city.location.lat, city.location.lng]);
       points.forEach((point) => {
         const marker = new Marker({
           lat: point.location.latitude,
@@ -45,7 +46,7 @@ function Map({points , city, activeCard}: MapProps):JSX.Element {
           .addTo(map);
       });
     }
-  }, [map, points, activeCard]);
+  }, [map, points, activeCard, city]);
 
   return (
     <div style={{height: '600px'}} ref={mapRef}></div>
