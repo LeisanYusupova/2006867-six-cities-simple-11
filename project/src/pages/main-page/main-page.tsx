@@ -7,6 +7,7 @@ import {Helmet} from 'react-helmet-async';
 import { useAppDispatch, useAppSelector } from '../../hooks/index';
 import {changeCityAction} from '../../store/action';
 import {cities} from '../../mock/cities';
+import {sortOffers} from '../../utils';
 
 
 type MainPageProps = {
@@ -15,7 +16,9 @@ type MainPageProps = {
 
 function MainPage({offers}: MainPageProps): JSX.Element {
   const currentCityName = useAppSelector((state) => state.city);
+  const currentSortType = useAppSelector((state) => state.sortType);
   const offersByCity = useAppSelector((state)=> state.offers.filter((offer)=> offer.city.name === currentCityName));
+  const sortedOffers = sortOffers(offersByCity, currentSortType);
   const dispatch = useAppDispatch();
   const onCityChageHandler = (city: string) => {
     dispatch(changeCityAction(city));
@@ -34,7 +37,7 @@ function MainPage({offers}: MainPageProps): JSX.Element {
           <CitiesList selectedCity = {currentCityName} onCityChange = {onCityChageHandler}/>
         </div>
         {offers.length > 0
-          ? <CardList offers={offersByCity} city={cityName}/>
+          ? <CardList offers={sortedOffers} city={cityName}/>
           : <NotFoundPlaces city={currentCityName}/>}
       </main>
     </body>);
