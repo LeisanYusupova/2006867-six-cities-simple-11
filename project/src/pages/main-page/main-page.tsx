@@ -18,7 +18,7 @@ function MainPage({offers}: MainPageProps): JSX.Element {
   const currentCityName = useAppSelector((state) => state.city);
   const currentSortType = useAppSelector((state) => state.sortType);
   const offersByCity = useAppSelector((state)=> state.offers.filter((offer)=> offer.city.name === currentCityName));
-  const sortedOffers = sortOffers(offersByCity, currentSortType);
+  const sortedOffers:OfferType[] = sortOffers(offersByCity, currentSortType);
   const dispatch = useAppDispatch();
   const onCityChageHandler = (city: string) => {
     dispatch(changeCityAction(city));

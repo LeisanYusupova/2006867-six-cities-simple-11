@@ -4,16 +4,17 @@ import RoomPage from '../../pages/room-page/room-page';
 import NotFoundPage from '../../pages/not-found-page/not-found-page';
 import {Route, BrowserRouter, Routes} from 'react-router-dom';
 import {HelmetProvider} from 'react-helmet-async';
-import {OfferType, City, ReviewType} from '../../types/types';
+import {City, ReviewType} from '../../types/types';
 import {AppRoute} from '../../const';
+import {useAppSelector} from '../../hooks';
 
 type AppProps = {
-  offers: OfferType[];
   city: City;
   reviews: ReviewType[];
 }
 
-function App({offers, city, reviews}: AppProps): JSX.Element {
+function App({city, reviews}: AppProps): JSX.Element {
+  const offers = useAppSelector((state) => state.offers);
   return (
     <HelmetProvider>
       <BrowserRouter>
