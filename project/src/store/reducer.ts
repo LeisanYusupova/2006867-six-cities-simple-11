@@ -1,19 +1,22 @@
 import {createReducer} from '@reduxjs/toolkit';
-import { changeCityAction, setOffersAction, sortOffersAction } from './action';
+import { changeCityAction, setOffersAction, sortOffersAction, loadOffersAction, setErrorAction, requireAuthorizationAction } from './action';
 import { cities} from '../mock/cities';
-import { offers } from '../mock/offers';
 import { OfferType } from '../types/types';
-import { SortTypes } from '../const';
+import { SortTypes, AuthorizationStatus } from '../const';
 
 
 const initialState: {
   city: string;
   offers: OfferType[];
-  sortType: string;
+  sortType: SortTypes;
+  authorizationStatus: AuthorizationStatus;
+  error: string | null;
 } = {
   city: cities[0].name,
-  offers: offers,
-  sortType: SortTypes.POPULAR
+  offers: [],
+  sortType: SortTypes.POPULAR,
+  authorizationStatus: AuthorizationStatus.Unknown,
+  error: null
 };
 
 export const reducer = createReducer(initialState, (builder) => {
@@ -27,5 +30,14 @@ export const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(sortOffersAction, (state, action) => {
       state.sortType = action.payload;
+    })
+    .addCase(loadOffersAction, (state, action) => {
+      state.offers = action.payload;
+    })
+    .addCase(setErrorAction, (state, action) => {
+      state.error = action.payload;
+    })
+    .addCase(requireAuthorizationAction, (state, action) => {
+      state.authorizationStatus = action.payload;
     });
 });

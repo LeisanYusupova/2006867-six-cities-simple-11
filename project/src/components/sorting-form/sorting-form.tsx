@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {useAppDispatch, useAppSelector} from '../../hooks/index';
+import {useAppDispatch, useAppSelector} from '../../hooks';
 import {SortTypes} from '../../const';
 import {sortOffersAction} from '../../store/action';
 
@@ -9,7 +9,7 @@ function SortingForm(): JSX.Element {
     setForm(!openedForm);
   };
   const dispatch = useAppDispatch();
-  const activeSortType = useAppSelector((state)=>state.sortType);
+  const activeSortType = useAppSelector((state) => state.sortType);
   const sortingHandler = (sortType : SortTypes) => {
     formHandler();
     if (sortType === activeSortType) {
