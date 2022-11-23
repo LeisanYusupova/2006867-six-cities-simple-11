@@ -7,6 +7,8 @@ import {HelmetProvider} from 'react-helmet-async';
 import {City, ReviewType} from '../../types/types';
 import {AppRoute} from '../../const';
 import {useAppSelector} from '../../hooks';
+import LoadingScreen from '../loading-screen/loading-screen';
+import ScrollToTop from '../scroll-to-top/scroll-to-top';
 
 type AppProps = {
   city: City;
@@ -14,10 +16,17 @@ type AppProps = {
 }
 
 function App({city, reviews}: AppProps): JSX.Element {
+  const isOffersLoadingStatus = useAppSelector((state) => state.isOffersLoading);
   const offers = useAppSelector((state) => state.offers);
+  if (isOffersLoadingStatus) {
+    return (
+      <LoadingScreen/>
+    );
+  }
   return (
     <HelmetProvider>
       <BrowserRouter>
+        <ScrollToTop/>
         <Routes>
           <Route
             index

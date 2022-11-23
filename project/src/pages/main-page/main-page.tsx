@@ -26,7 +26,7 @@ function MainPage({offers}: MainPageProps): JSX.Element {
   const cityName = cities.find((item) => item.name === currentCityName) || cities[0];
 
   return (
-    <body className="page page--gray page--main">
+    <>
       <Helmet>
         <title>Главная страница</title>
       </Helmet>
@@ -40,7 +40,8 @@ function MainPage({offers}: MainPageProps): JSX.Element {
           ? <CardList offers={sortedOffers} city={cityName}/>
           : <NotFoundPlaces city={currentCityName}/>}
       </main>
-    </body>);
+    </>
+  );
 }
 
 export default MainPage;
