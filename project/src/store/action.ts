@@ -30,6 +30,14 @@ export const loadOffersAction = createAction(
   })
 );
 
+export const setOffersLoadingStatus = createAction(
+  'offers/loadingStatus',
+  (isOffersLoading:boolean) => ({
+    payload: isOffersLoading,
+  })
+);
+
+
 export const requireAuthorizationAction = createAction(
   'user/requireAuthorization',
   (authorizationStatus: AuthorizationStatus) => ({
