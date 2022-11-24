@@ -1,31 +1,38 @@
 import Header from '../../components/header/header';
 import ReviewList from '../../components/review-list/review-list';
 import {Helmet} from 'react-helmet-async';
-import {OfferType, ReviewType, City} from '../../types/types';
+import { City} from '../../types/types';
 import {useParams} from 'react-router-dom';
 import NotFoundPage from '../not-found-page/not-found-page';
 import Map from '../../components/map/map';
+import { useAppSelector } from '../../hooks';
 import {calculateRating} from '../../utils';
+import {useEffect} from 'react';
+import {store} from '../../store/index';
+import {fetchCommentsAction, fetchNearOffersAction} from '../../store/api-actions';
 
 type RoomOffer = {
-  offers: OfferType[];
-  reviews: ReviewType[];
   city: City;
 }
 
 
-function RoomPage({offers, reviews, city}: RoomOffer): JSX.Element {
+function RoomPage({city}: RoomOffer): JSX.Element {
   const params = useParams();
+  useEffect(() => {
+    store.dispatch(fetchCommentsAction(Number(params.id)));
+    store.dispatch(fetchNearOffersAction(Number(params.id)));
+  },[params.id]);
+
+  const offers = useAppSelector((state)=>state.offers);
+  const nearPlaces = useAppSelector((state)=>state.nearOffers);
   const offer = offers.find((item) => item.id.toString() === params.id);
   if (!offer) {
     return (
       <NotFoundPage/>
     );
   }
-  const {title, type, bedrooms, price, goods, images, isPremium, maxAdults, host, description, rating} = offer;
+  const {id, title, type, bedrooms, price, goods, images, isPremium, maxAdults, host, description, rating} = offer;
   const {isPro, name} = host;
-  const offerReviews = reviews.filter((item) => item.hotelId === offer.id);
-  const nearPlaces = offers.filter((item) => item.id !== offer.id);
   return (
     <div className="page">
       <Helmet>
@@ -114,11 +121,11 @@ function RoomPage({offers, reviews, city}: RoomOffer): JSX.Element {
                   </p>
                 </div>
               </div>
-              <ReviewList reviews={offerReviews}></ReviewList>
+              <ReviewList currentId={id}></ReviewList>
             </div>
           </div>
           <section className="property__map map">
-            <Map points = {offers} activeCard = {offer} city = {city}></Map>
+            <Map points = {nearPlaces} activeCard = {offer} city = {city}></Map>
           </section>
         </section>
         <div className="container">
