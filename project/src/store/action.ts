@@ -1,5 +1,5 @@
 import {createAction} from '@reduxjs/toolkit';
-import {OfferType} from '../types/types';
+import {OfferType, ReviewType} from '../types/types';
 import { SortTypes, AuthorizationStatus } from '../const';
 
 export const changeCityAction = createAction(
@@ -49,5 +49,19 @@ export const setErrorAction = createAction(
   'app/setError',
   (error: string | null) => ({
     payload: error,
+  })
+);
+
+export const loadReviewsAction = createAction(
+  'reviews/loadReviews',
+  (comments: ReviewType[] ) => ({
+    payload: comments,
+  })
+);
+
+export const loadNearOffersAction = createAction (
+  'nearOffers/loadOffers',
+  (nearOffers: OfferType[]) => ({
+    payload: nearOffers,
   })
 );

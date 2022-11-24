@@ -16,10 +16,10 @@ const root = ReactDOM.createRoot(
 
 
 root.render(
-  // <React.StrictMode>
-  <Provider store={store}>
-    <ErrorMessage />
-    <App city = {cities[0]} reviews={reviews}/>
-  </Provider>
-  // </React.StrictMode>,
+  <React.StrictMode>
+    <Provider store={store}>
+      <ErrorMessage />
+      <App city = {cities[0]} reviews={reviews}/>
+    </Provider>
+  </React.StrictMode>,
 );

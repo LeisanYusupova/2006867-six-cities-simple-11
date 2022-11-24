@@ -17,7 +17,7 @@ function CardList({offers, city}: CardListOffers): JSX.Element {
 
   return (
     <div className="cities">
-      <div className="cities__places-container container">
+      <div className="cities__places-container container" style = {{height: '600px'}}>
 
         <section className="cities__places places">
           <h2 className="visually-hidden">Places</h2>

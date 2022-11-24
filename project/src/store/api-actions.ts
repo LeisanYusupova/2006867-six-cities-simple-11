@@ -1,8 +1,8 @@
 import {AxiosInstance} from 'axios';
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import {AppDispatch, State} from '../types/state';
-import { loadOffersAction, setErrorAction, requireAuthorizationAction, setOffersLoadingStatus } from './action';
-import { OfferType } from '../types/types';
+import { loadOffersAction, setErrorAction, requireAuthorizationAction, setOffersLoadingStatus, loadReviewsAction, loadNearOffersAction } from './action';
+import { OfferType, ReviewType } from '../types/types';
 import { APIRoute, TIMEOUT_SHOW_ERROR, AuthorizationStatus } from '../const';
 import { store} from './index';
 import { UserData } from '../types/user-data';
@@ -33,6 +33,32 @@ export const fetchOffersAction = createAsyncThunk<void, undefined, {
     dispatch(loadOffersAction(data));
     dispatch(setOffersLoadingStatus(false));
   },
+);
+
+export const fetchCommentsAction = createAsyncThunk<void, number, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}
+> (
+  'data/fetchComments',
+  async (id, {dispatch, extra: api}) => {
+    const {data} = await api.get<ReviewType[]>(`${APIRoute.Comments}/${id}`);
+    dispatch(loadReviewsAction(data));
+  }
+);
+
+export const fetchNearOffersAction = createAsyncThunk<void, number, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}
+> (
+  'data/fetchNearOffers',
+  async (id, {dispatch, extra: api}) => {
+    const {data} = await api.get<OfferType[]>(`${APIRoute.Offers}/${id}/nearby`);
+    dispatch(loadNearOffersAction(data));
+  }
 );
 
 export const checkAuthAction = createAsyncThunk<void, undefined, {
@@ -78,4 +104,18 @@ export const logoutAction = createAsyncThunk<void, undefined, {
     dropToken();
     dispatch(requireAuthorizationAction(AuthorizationStatus.NoAuth));
   },
+);
+
+
+export const fetchSendCommentAction = createAsyncThunk<void, {id: number; comment: string; rating: number}, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}
+> (
+  'data/fetchComment',
+  async ({id, comment, rating}, {dispatch, extra: api}) => {
+    await api.post(`${APIRoute.Comments}/${id}`, {comment, rating});
+    dispatch(fetchCommentsAction(Number(id)));
+  }
 );

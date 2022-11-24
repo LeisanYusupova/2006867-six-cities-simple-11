@@ -39,7 +39,7 @@ function Map({points , city, activeCard}: MapProps):JSX.Element {
 
         marker
           .setIcon(
-            activeCard !== undefined && point.title === activeCard.title
+            activeCard !== undefined && point.id === activeCard.id
               ? currentCustomIcon
               : defaultCustomIcon
           )
