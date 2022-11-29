@@ -5,11 +5,9 @@ import {useState} from 'react';
 import {useAppDispatch} from '../../hooks';
 import React from 'react';
 import {loginAction} from '../../store/api-actions';
-import {useNavigate} from 'react-router-dom';
 
 
 function LoginPage(): JSX.Element {
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const [emailField, setEmailField] = useState('');
   const [passwordField, setPasswordField] = useState('');
@@ -27,7 +25,6 @@ function LoginPage(): JSX.Element {
     if (emailField !== null && passwordField !== null) {
       localStorage.email = emailField;
       dispatch(loginAction({email: emailField, password:passwordField}));
-      navigate('/');
     }
   };
   return (

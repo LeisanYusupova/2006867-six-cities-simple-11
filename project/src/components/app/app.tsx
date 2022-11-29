@@ -2,7 +2,7 @@ import MainPage from '../../pages/main-page/main-page';
 import LoginPage from '../../pages/login-page/login-page';
 import RoomPage from '../../pages/room-page/room-page';
 import NotFoundPage from '../../pages/not-found-page/not-found-page';
-import {Route, BrowserRouter, Routes} from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
 import {HelmetProvider} from 'react-helmet-async';
 import {City} from '../../types/types';
 import {AppRoute} from '../../const';
@@ -10,6 +10,8 @@ import {useAppSelector} from '../../hooks';
 import LoadingScreen from '../loading-screen/loading-screen';
 import ScrollToTop from '../scroll-to-top/scroll-to-top';
 import {getOffers, getOffersDataLoadingStatus} from '../../store/offers-data/selectors';
+import HistoryRouter from '../history-route/history-route';
+import browserHistory from '../../browserHistory';
 
 type AppProps = {
   city: City;
@@ -25,7 +27,7 @@ function App({city}: AppProps): JSX.Element {
   }
   return (
     <HelmetProvider>
-      <BrowserRouter>
+      <HistoryRouter history={browserHistory}>
         <ScrollToTop/>
         <Routes>
           <Route
@@ -49,7 +51,7 @@ function App({city}: AppProps): JSX.Element {
             element={<NotFoundPage/>}
           />
         </Routes>
-      </BrowserRouter>
+      </HistoryRouter>
     </HelmetProvider>
   );
 }
