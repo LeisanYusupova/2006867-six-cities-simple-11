@@ -48,14 +48,14 @@ export type ReviewType = {
 
 export type City = {
   location: {
-    lat: number;
-    lng: number;
+    latitude: number;
+    longitude: number;
     zoom: number;
   };
   name: string;
 };
 
 export type Point = {
-  lat: number;
-  lng: number;
+  latitude: number;
+  longitude: number;
 };

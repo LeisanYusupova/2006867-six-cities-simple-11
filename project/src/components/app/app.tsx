@@ -4,20 +4,20 @@ import RoomPage from '../../pages/room-page/room-page';
 import NotFoundPage from '../../pages/not-found-page/not-found-page';
 import {Route, BrowserRouter, Routes} from 'react-router-dom';
 import {HelmetProvider} from 'react-helmet-async';
-import {City, ReviewType} from '../../types/types';
+import {City} from '../../types/types';
 import {AppRoute} from '../../const';
 import {useAppSelector} from '../../hooks';
 import LoadingScreen from '../loading-screen/loading-screen';
 import ScrollToTop from '../scroll-to-top/scroll-to-top';
+import {getOffers, getOffersDataLoadingStatus} from '../../store/offers-data/selectors';
 
 type AppProps = {
   city: City;
-  reviews: ReviewType[];
 }
 
-function App({city, reviews}: AppProps): JSX.Element {
-  const isOffersLoadingStatus = useAppSelector((state) => state.isOffersLoading);
-  const offers = useAppSelector((state) => state.offers);
+function App({city}: AppProps): JSX.Element {
+  const isOffersLoadingStatus = useAppSelector(getOffersDataLoadingStatus);
+  const offers = useAppSelector(getOffers);
   if (isOffersLoadingStatus) {
     return (
       <LoadingScreen/>
@@ -40,7 +40,7 @@ function App({city, reviews}: AppProps): JSX.Element {
           <Route path={AppRoute.Room}>
             <Route
               path={AppRoute.Id}
-              element={<RoomPage city={city}/>}
+              element={<RoomPage/>}
             />
           </Route>
 

@@ -13,13 +13,13 @@ type MapProps ={
 
 const defaultCustomIcon = new Icon({
   iconUrl: URL_MARKER_DEFAULT,
-  iconSize: [40, 40],
+  iconSize: [27, 39],
   iconAnchor: [20, 40]
 });
 
 const currentCustomIcon = new Icon({
   iconUrl: URL_MARKER_CURRENT,
-  iconSize: [40, 40],
+  iconSize: [27, 39],
   iconAnchor: [20, 40]
 });
 
@@ -30,7 +30,7 @@ function Map({points , city, activeCard}: MapProps):JSX.Element {
 
   useEffect(() => {
     if (map) {
-      map.setView([city.location.lat, city.location.lng]);
+      map.setView([city.location.latitude, city.location.longitude]);
       points.forEach((point) => {
         const marker = new Marker({
           lat: point.location.latitude,
