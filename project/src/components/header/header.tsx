@@ -2,11 +2,12 @@ import {AuthorizationStatus} from '../../const';
 import {Link} from 'react-router-dom';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {logoutAction} from '../../store/api-actions';
+import {getAuthorizationStatus} from '../../store/user-process/selectors';
 
 function Header() {
-  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
+  const authorizationStatus = useAppSelector(getAuthorizationStatus );
   const dispatch = useAppDispatch();
-  const logoutHandler = () => {
+  const handleLogout = () => {
     dispatch(logoutAction());
   };
 
@@ -38,7 +39,7 @@ function Header() {
                   </div>
                 </li>
                 <li className="header__nav-item">
-                  <Link to='/' className="header__nav-link" onClick = {()=>logoutHandler()}>
+                  <Link to='/' className="header__nav-link" onClick = {()=>handleLogout()}>
                     <span className="header__signout">Sign out</span>
                   </Link>
                 </li>

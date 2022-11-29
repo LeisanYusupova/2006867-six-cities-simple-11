@@ -1,7 +1,6 @@
 import Header from '../../components/header/header';
 import ReviewList from '../../components/review-list/review-list';
 import {Helmet} from 'react-helmet-async';
-import { City} from '../../types/types';
 import {useParams} from 'react-router-dom';
 import NotFoundPage from '../not-found-page/not-found-page';
 import Map from '../../components/map/map';
@@ -10,21 +9,18 @@ import {calculateRating} from '../../utils';
 import {useEffect} from 'react';
 import {store} from '../../store/index';
 import {fetchCommentsAction, fetchNearOffersAction} from '../../store/api-actions';
-
-type RoomOffer = {
-  city: City;
-}
+import {getOffers, getNearOffers} from '../../store/offers-data/selectors';
 
 
-function RoomPage({city}: RoomOffer): JSX.Element {
+function RoomPage(): JSX.Element {
   const params = useParams();
   useEffect(() => {
     store.dispatch(fetchCommentsAction(Number(params.id)));
     store.dispatch(fetchNearOffersAction(Number(params.id)));
   },[params.id]);
 
-  const offers = useAppSelector((state)=>state.offers);
-  const nearPlaces = useAppSelector((state)=>state.nearOffers);
+  const offers = useAppSelector(getOffers);
+  const nearPlaces = useAppSelector(getNearOffers);
   const offer = offers.find((item) => item.id.toString() === params.id);
   if (!offer) {
     return (
@@ -32,6 +28,7 @@ function RoomPage({city}: RoomOffer): JSX.Element {
     );
   }
   const {id, title, type, bedrooms, price, goods, images, isPremium, maxAdults, host, description, rating} = offer;
+  const city = offer.city;
   const {isPro, name} = host;
   return (
     <div className="page">

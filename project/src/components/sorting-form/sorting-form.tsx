@@ -1,27 +1,28 @@
-import {useState} from 'react';
+import {memo, useState} from 'react';
 import {useAppDispatch, useAppSelector} from '../../hooks';
 import {SortTypes} from '../../const';
-import {sortOffersAction} from '../../store/action';
+import { sortOffers } from '../../store/app-process/app-process';
+import {getSortType} from '../../store/app-process/selectors';
 
 function SortingForm(): JSX.Element {
   const [openedForm, setForm] = useState(false);
-  const formHandler = () => {
+  const handleFormSubmit = () => {
     setForm(!openedForm);
   };
   const dispatch = useAppDispatch();
-  const activeSortType = useAppSelector((state) => state.sortType);
-  const sortingHandler = (sortType : SortTypes) => {
-    formHandler();
+  const activeSortType = useAppSelector(getSortType);
+  const handleSorting = (sortType : SortTypes) => {
+    handleFormSubmit();
     if (sortType === activeSortType) {
       return;
     }
-    dispatch(sortOffersAction(sortType));
+    dispatch(sortOffers({sortType}));
   };
 
   return (
     <form className="places__sorting" action="#" method="get">
       <span className="places__sorting-caption">Sort by &nbsp; </span>
-      <span className="places__sorting-type" tabIndex={0} onClick={formHandler}>
+      <span className="places__sorting-type" tabIndex={0} onClick={handleFormSubmit}>
         {activeSortType}
         <svg className="places__sorting-arrow" width="7" height="4">
           <use xlinkHref="#icon-arrow-select"></use>
@@ -32,7 +33,7 @@ function SortingForm(): JSX.Element {
           <li className={`places__option ${activeSortType === sortType ? 'places__option--active' : ''}`}
             tabIndex={0}
             key={sortType}
-            onClick = {() => sortingHandler(sortType)}
+            onClick = {() => handleSorting(sortType)}
           >{sortType}
           </li>))}
       </ul>
@@ -40,5 +41,5 @@ function SortingForm(): JSX.Element {
   );
 }
 
-export default SortingForm;
+export default memo(SortingForm);
 

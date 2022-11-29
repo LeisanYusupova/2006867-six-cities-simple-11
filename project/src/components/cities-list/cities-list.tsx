@@ -1,4 +1,4 @@
-import { cities } from '../../mock/cities';
+import { cities } from '../../const';
 import { Link } from 'react-router-dom';
 import {AppRoute} from '../../const';
 
