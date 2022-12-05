@@ -8,7 +8,7 @@ const initialState: {
   sortType: SortTypes;
   error: string | null;
 } = {
-  city: cities[1].name,
+  city: cities[0].name,
   sortType: SortTypes.POPULAR,
   error: null,
 };
