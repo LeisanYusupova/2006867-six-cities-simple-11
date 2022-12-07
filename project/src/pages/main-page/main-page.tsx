@@ -7,7 +7,7 @@ import {Helmet} from 'react-helmet-async';
 import { useAppDispatch, useAppSelector } from '../../hooks/index';
 import { changeCity } from '../../store/app-process/app-process';
 import {cities} from '../../const';
-import {sortOffers} from '../../utils';
+import {sortOffers} from '../../utils/utils';
 import {useMemo} from 'react';
 import {getCity, getSortType} from '../../store/app-process/selectors';
 import {getOffers} from '../../store/offers-data/selectors';
