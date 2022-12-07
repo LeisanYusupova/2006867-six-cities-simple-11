@@ -6,11 +6,9 @@ import { createSlice , PayloadAction} from '@reduxjs/toolkit';
 const initialState: {
   city: string;
   sortType: SortTypes;
-  error: string | null;
 } = {
   city: cities[0].name,
   sortType: SortTypes.POPULAR,
-  error: null,
 };
 
 export const appProcess = createSlice({

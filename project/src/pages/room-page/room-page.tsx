@@ -5,7 +5,7 @@ import {useParams} from 'react-router-dom';
 import NotFoundPage from '../not-found-page/not-found-page';
 import Map from '../../components/map/map';
 import { useAppSelector } from '../../hooks';
-import {calculateRating} from '../../utils';
+import {calculateRating} from '../../utils/utils';
 import {useEffect} from 'react';
 import {store} from '../../store/index';
 import {fetchCommentsAction, fetchNearOffersAction} from '../../store/api-actions';

@@ -1,6 +1,6 @@
-import { City } from './types/types';
-import { OfferType } from './types/types';
-import { SortTypes } from './const';
+import { City } from '../types/types';
+import { OfferType } from '../types/types';
+import { SortTypes } from '../const';
 
 export const formatDate = (date: string): string => {
   const d = new Date(date);
