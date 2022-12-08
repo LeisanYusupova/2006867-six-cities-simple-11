@@ -5,9 +5,11 @@ import {useState} from 'react';
 import {useAppDispatch} from '../../hooks';
 import React from 'react';
 import {loginAction} from '../../store/api-actions';
+import {toast} from 'react-toastify';
 
 
 function LoginPage(): JSX.Element {
+  const passwordRegex = /^(?=.*?[A-Za-z])(?=.*?[0-9]).{2,}$/;
   const dispatch = useAppDispatch();
   const [emailField, setEmailField] = useState('');
   const [passwordField, setPasswordField] = useState('');
@@ -23,6 +25,10 @@ function LoginPage(): JSX.Element {
   const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     if (emailField !== null && passwordField !== null) {
+      if (!(String(passwordField).match(passwordRegex))){
+        toast.warn('The password should contain at least 1 number and 1 letter');
+        return;
+      }
       localStorage.email = emailField;
       dispatch(loginAction({email: emailField, password:passwordField}));
     }
