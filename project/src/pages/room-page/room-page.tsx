@@ -10,6 +10,7 @@ import {useEffect} from 'react';
 import {store} from '../../store/index';
 import {fetchCommentsAction, fetchNearOffersAction} from '../../store/api-actions';
 import {getOffers, getNearOffers} from '../../store/offers-data/selectors';
+import { Link } from 'react-router-dom';
 
 
 function RoomPage(): JSX.Element {
@@ -44,7 +45,7 @@ function RoomPage(): JSX.Element {
         <section className="property">
           <div className="property__gallery-container container">
             <div className="property__gallery">
-              {images.map((image) => (
+              {images.slice(0, 6).map((image) => (
                 <div className="property__image-wrapper" key={image}>
                   <img className="property__image" src={image} alt="Photo studio" />
                 </div>)
@@ -132,9 +133,9 @@ function RoomPage(): JSX.Element {
               {nearPlaces.map((item) => (
                 <article className="near-places__card place-card" key = {item.id}>
                   <div className="near-places__image-wrapper place-card__image-wrapper">
-                    <a href="#">
+                    <Link to = {`/offer/${item.id}`}>
                       <img className="place-card__image" src={item.previewImage} width="260" height="200" alt="Place" />
-                    </a>
+                    </Link>
                   </div>
                   <div className="place-card__info">
                     <div className="place-card__price-wrapper">
@@ -150,7 +151,7 @@ function RoomPage(): JSX.Element {
                       </div>
                     </div>
                     <h2 className="place-card__name">
-                      <a href="#">{item.title}</a>
+                      <Link to = {`/offer/${item.id}`}>{item.title}</Link>
                     </h2>
                     <p className="place-card__type">{item.type}</p>
                   </div>
