@@ -30,12 +30,12 @@ function MainPage({offers}: MainPageProps): JSX.Element {
   const cityName: City = cities.find((item) => item.name === currentCityName) || cities[0];
 
   return (
-    <>
+    <div className="page page--gray page--main">
       <Helmet>
         <title>Главная страница</title>
       </Helmet>
       <Header/>
-      <main className="page__main page__main--index">
+      <main className={offers.length > 0 ? 'page__main page__main--index' : 'page__main page__main--index page__main--index-empty'}>
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <CitiesList selectedCity = {currentCityName} onCityChange = {handleCityChange}/>
@@ -44,7 +44,7 @@ function MainPage({offers}: MainPageProps): JSX.Element {
           ? <CardList offers={sortedOffers} city={cityName}/>
           : <NotFoundPlaces city={currentCityName}/>}
       </main>
-    </>
+    </div>
   );
 }
 

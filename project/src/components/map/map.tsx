@@ -1,6 +1,6 @@
 import { useRef, useEffect} from 'react';
-import { Icon, Marker } from 'leaflet';
-import useMap from '../../hooks/useMap';
+import { Icon, Marker, LayerGroup } from 'leaflet';
+import useMap from '../../hooks/use-Map';
 import 'leaflet/dist/leaflet.css';
 import { OfferType, City } from '../../types/types';
 import {URL_MARKER_DEFAULT, URL_MARKER_CURRENT} from '../../const';
@@ -29,23 +29,23 @@ function Map({points , city, activeCard}: MapProps):JSX.Element {
   const map = useMap(mapRef, city);
 
   useEffect(() => {
-    if (map) {
-      map.setView([city.location.latitude, city.location.longitude]);
-      points.forEach((point) => {
-        const marker = new Marker({
-          lat: point.location.latitude,
-          lng: point.location.longitude
-        });
-
-        marker
-          .setIcon(
-            activeCard !== undefined && point.id === activeCard.id
-              ? currentCustomIcon
-              : defaultCustomIcon
-          )
-          .addTo(map);
-      });
+    if (!map) {
+      return;
     }
+    map.setView([city.location.latitude, city.location.longitude]);
+    const markers = points.map(({ id, location }) =>
+      new Marker(
+        [location.latitude, location.longitude],
+        { icon: activeCard !== undefined && id === activeCard.id ? currentCustomIcon : defaultCustomIcon }
+      )
+    );
+
+    const markersGroup = new LayerGroup(markers);
+    markersGroup.addTo(map);
+
+    return () => {
+      map.removeLayer(markersGroup);
+    };
   }, [map, points, activeCard, city]);
 
   return (

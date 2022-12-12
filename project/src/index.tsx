@@ -4,6 +4,8 @@ import App from './components/app/app';
 import { cities } from './const';
 import {Provider} from 'react-redux';
 import { store } from './store';
+import {ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { fetchOffersAction, checkAuthAction } from './store/api-actions';
 
 store.dispatch(checkAuthAction());
@@ -17,6 +19,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
+      <ToastContainer />
       <App city = {cities[0]}/>
     </Provider>
   </React.StrictMode>,
