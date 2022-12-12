@@ -1,17 +1,20 @@
 import {OfferType} from '../../types/types';
 import { Link } from 'react-router-dom';
+import {makeCapitalLetter} from '../../utils/utils';
+import {calculateRating} from '../../utils/utils';
 
 type CardInfoProps = {
   offer: OfferType;
   onActiveChange: (offer: OfferType) =>void;
+  fromActiveChange: ()=> void;
 }
 
-function PlaceCard({offer, onActiveChange}: CardInfoProps):
+function PlaceCard({offer, onActiveChange, fromActiveChange}: CardInfoProps):
 JSX.Element {
-  const { id, isPremium, price, title, previewImage, type} = offer;
+  const { id, isPremium, price, title, previewImage, type, rating} = offer;
   return (
 
-    <article className="cities__card place-card" onMouseOver = {()=>onActiveChange(offer)}>
+    <article className="cities__card place-card" onMouseOver = {()=>onActiveChange(offer)} onMouseLeave = {()=>fromActiveChange()}>
       { isPremium
         ?
         <div className="place-card__mark">
@@ -33,14 +36,14 @@ JSX.Element {
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style = {{width: '80%'}}></span>
+            <span style = {{width: `${calculateRating(rating)}%`}}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
         <h2 className="place-card__name">
           <Link to = {`/offer/${id}`}>{title}</Link>
         </h2>
-        <p className="place-card__type">{type}</p>
+        <p className="place-card__type">{makeCapitalLetter(type)}</p>
       </div>
     </article>);
 }

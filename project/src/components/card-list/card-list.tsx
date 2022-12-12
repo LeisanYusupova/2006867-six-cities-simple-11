@@ -15,16 +15,19 @@ function CardList({offers, city}: CardListOffers): JSX.Element {
     setActiveCard(card);
   };
 
+  const handleInactiveCard = () => {
+    setActiveCard(undefined);
+  };
+
   return (
     <div className="cities">
-      <div className="cities__places-container container" style = {{height: '600px'}}>
-
+      <div className="cities__places-container container">
         <section className="cities__places places">
           <h2 className="visually-hidden">Places</h2>
           <b className="places__found">{offers.length} places to stay in {city.name}</b>
           <SortingForm/>
           <div className="cities__places-list places__list tabs__content">
-            {offers.map((item) => <PlaceCard offer={item} key={item.id} onActiveChange={handleActiveCard}/>)}
+            {offers.map((item) => <PlaceCard offer={item} key={item.id} onActiveChange={handleActiveCard} fromActiveChange = {handleInactiveCard}/>)}
           </div>
         </section>
         <div className="cities__right-section">

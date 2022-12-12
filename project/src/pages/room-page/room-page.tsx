@@ -12,14 +12,21 @@ import {fetchCommentsAction, fetchNearOffersAction} from '../../store/api-action
 import {getOffers, getNearOffers} from '../../store/offers-data/selectors';
 import { Link } from 'react-router-dom';
 
+const MAX_PHOTO = 6;
+
 
 function RoomPage(): JSX.Element {
   const params = useParams();
   useEffect(() => {
-    store.dispatch(fetchCommentsAction(Number(params.id)));
-    store.dispatch(fetchNearOffersAction(Number(params.id)));
+    let isMounted = true;
+    if (params.id && isMounted) {
+      store.dispatch(fetchCommentsAction(Number(params.id)));
+      store.dispatch(fetchNearOffersAction(Number(params.id)));
+      return () => {
+        isMounted = false;
+      };
+    }
   },[params.id]);
-
   const offers = useAppSelector(getOffers);
   const nearPlaces = useAppSelector(getNearOffers);
   const offer = offers.find((item) => item.id.toString() === params.id);
@@ -45,7 +52,7 @@ function RoomPage(): JSX.Element {
         <section className="property">
           <div className="property__gallery-container container">
             <div className="property__gallery">
-              {images.slice(0, 6).map((image) => (
+              {images.slice(0, MAX_PHOTO).map((image) => (
                 <div className="property__image-wrapper" key={image}>
                   <img className="property__image" src={image} alt="Photo studio" />
                 </div>)
@@ -123,7 +130,7 @@ function RoomPage(): JSX.Element {
             </div>
           </div>
           <section className="property__map map">
-            <Map points = {nearPlaces} activeCard = {offer} city = {city} ></Map>
+            <Map points = {[...nearPlaces, offer]} city = {city} activeCard = {offer}></Map>
           </section>
         </section>
         <div className="container">

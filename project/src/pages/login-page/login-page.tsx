@@ -6,9 +6,12 @@ import {useAppDispatch} from '../../hooks';
 import React from 'react';
 import {loginAction} from '../../store/api-actions';
 import {toast} from 'react-toastify';
+import {changeCity} from '../../store/app-process/app-process';
+import {getRandomCity} from '../../utils/utils';
 
 
 function LoginPage(): JSX.Element {
+  const randomCity = getRandomCity();
   const passwordRegex = /^(?=.*?[A-Za-z])(?=.*?[0-9]).{2,}$/;
   const dispatch = useAppDispatch();
   const [emailField, setEmailField] = useState('');
@@ -32,6 +35,10 @@ function LoginPage(): JSX.Element {
       localStorage.email = emailField;
       dispatch(loginAction({email: emailField, password:passwordField}));
     }
+  };
+
+  const onRandomCityClick = () => {
+    dispatch(changeCity(randomCity.name));
   };
   return (
     <div className="page page--gray page--login">
@@ -91,8 +98,8 @@ function LoginPage(): JSX.Element {
           </section>
           <section className="locations locations--login locations--current">
             <div className="locations__item">
-              <Link to = {AppRoute.Root} className="locations__item-link" >
-                <span>Amsterdam</span>
+              <Link to = {AppRoute.Root} className="locations__item-link" onClick={()=> onRandomCityClick()} >
+                <span>{randomCity.name}</span>
               </Link>
             </div>
           </section>
