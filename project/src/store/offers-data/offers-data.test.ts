@@ -24,8 +24,8 @@ describe('Reducer: offers-data', () => {
   });
 
   it('without additional parameters should return initial state', () => {
-    expect(offersData.reducer(void 0, {type: 'UNKNOWN_ACTION'}))
-      .toEqual({state});
+    expect(offersData.reducer(undefined, {type: 'UNKNOWN_ACTION'}))
+      .toEqual(state);
   });
 
   it('should change loading status to "True"', () => {

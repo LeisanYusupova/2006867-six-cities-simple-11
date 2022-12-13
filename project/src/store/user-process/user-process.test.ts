@@ -16,8 +16,8 @@ describe('Reducer: user-process', () => {
   });
 
   it('without additional parameters should return initial state', () => {
-    expect(userProcess.reducer(void 0, {type: 'UNKNOWN_ACTION'}))
-      .toEqual({state});
+    expect(userProcess.reducer(undefined, {type: 'UNKNOWN_ACTION'}))
+      .toEqual(state);
   });
 
   describe('checkAuthAction test', () => {

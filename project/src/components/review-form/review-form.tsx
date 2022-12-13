@@ -24,7 +24,7 @@ function ReviewForm({currentId}: PropType): JSX.Element {
     const comment = formData.review;
     const rating = formData.rating;
     setStatusCommentSending(true);
-    dispatch(fetchSendCommentAction({id, comment, rating}))
+    dispatch(fetchSendCommentAction({id, comment, rating})).unwrap()
       .then(() => {
         setFormData({rating: 0, review: ''});
       })

@@ -20,7 +20,7 @@ export const getOffersByCity = (offers: OfferType[], city: City):OfferType[] => 
 
 const sortLowToHigh = (offer1: OfferType, offer2: OfferType): number => offer1.price - offer2.price;
 const sortHighToLow = (offer1: OfferType, offer2: OfferType) : number => offer2.price - offer1.price;
-const sortByRating = (offer1: OfferType, offer2: OfferType): number => offer1.rating - offer2.rating;
+const sortByRating = (offer1: OfferType, offer2: OfferType): number => offer2.rating - offer1.rating;
 
 export const sortOffers = (offers: OfferType[], type: string) => {
   switch(type) {
